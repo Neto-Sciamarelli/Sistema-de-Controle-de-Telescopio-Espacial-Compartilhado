@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCTEC Agendamento</title>
+</head>
+<body>
+    <h1>SCTEC - Painel do Cientista</h1>
+    <p>Horário Servidor (Sincronizado): <span id="clock">Calculando...</span></p>
+    <button onclick="sincronizar()">Sincronizar Relógio</button>
+    
+    <script>
+        let serverOffset = 0;
+
+        async function sincronizar() {
+            let t0 = Date.now();
+            let response = await fetch('/time');
+            let data = await response.json();
+            let t1 = Date.now();
+            
+            // Algoritmo de Cristian [cite: 110]
+            // O tempo do servidor é o tempo recebido + (metade do RTT)
+            let serverTime = new Date(data.server_time_utc).getTime();
+            let rtt = t1 - t0;
+            let realServerTime = serverTime + (rtt / 2);
+            
+            serverOffset = realServerTime - t1;
+            alert(`Sincronizado! RTT: ${rtt}ms. Ajuste: ${serverOffset}ms`);
+        }
+
+        setInterval(() => {
+            let now = Date.now() + serverOffset;
+            document.getElementById('clock').innerText = new Date(now).toISOString();
+        }, 1000);
+        
+        // Ao carregar
+        sincronizar();
+    </script>
+</body>
+</html>
