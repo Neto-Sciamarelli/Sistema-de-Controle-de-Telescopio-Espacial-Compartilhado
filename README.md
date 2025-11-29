@@ -55,7 +55,7 @@ Foi executado um script de **Teste de Estresse** disparando 10 requisições sim
 * **Log do Coordenador:** Mostra 1 *Lock* concedido e vários negados.
 
 ![Teste de Estresse e Logs](prints/teste_stress_logs.png)
-*(Descrição: Print dividido mostrando o terminal do script de teste com os erros 409 e o terminal do Docker mostrando os logs de "Lock Concedido" vs "Recurso Ocupado")*
+*(Descrição: Print mostrando o terminal do script de teste com os erros 409)*
 
 ### 4. Logs de Auditoria e Cancelamento
 O sistema gera logs estruturados (JSON) para operações críticas. Abaixo, a evidência de um cancelamento realizado via HATEOAS.
@@ -89,7 +89,7 @@ O sistema gera logs estruturados (JSON) para operações críticas. Abaixo, a ev
 
 4.  (Opcional) Rode o teste de estresse (requer Python local):
     ```bash
-    python teste_stress.py
+    python3 teste_stress.py
     ```
 
 ---
