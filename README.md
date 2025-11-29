@@ -61,7 +61,7 @@ Foi executado um script de **Teste de Estresse** disparando 10 requisições sim
 O sistema gera logs estruturados (JSON) para operações críticas. Abaixo, a evidência de um cancelamento realizado via HATEOAS.
 
 ![Logs de Auditoria](prints/audit_logs.png)
-*(Descrição: Print do terminal focando nas linhas que contêm "AUDIT_LOG", mostrando "AGENDAMENTO_CRIADO" e "AGENDAMENTO_CANCELADO")*
+*(Descrição: Print do terminal focando nas linhas que contêm "AUDIT_LOG", mostrando "AGENDAMENTO_CANCELADO")*
 
 ---
 
